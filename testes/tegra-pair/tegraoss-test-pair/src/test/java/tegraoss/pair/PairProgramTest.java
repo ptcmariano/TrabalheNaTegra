@@ -49,7 +49,7 @@ public class PairProgramTest
         PairProgram pair = new PairProgram();
         pair.addDeveloper("Paulo Mariano", Developer.niveis.pleno);
         pair.addDeveloper("Felipe Bernardes", Developer.niveis.senior);
-        int expected = 20;
+        int expected = 2;
         assertEquals(expected, pair.getPublico().size());
     }
     
@@ -59,20 +59,13 @@ public class PairProgramTest
         Developer expected = new Developer();
         assertEquals(expected.getClass(), pair.sorteiaDriver().getClass());
     }
-    
-    public void testAdiciona1DevSeniorPorPesoDeveRetornar10()
-    {
-        PairProgram pair = new PairProgram();
-        pair.addDeveloper("Felipe Bernardes", Developer.niveis.senior);
-        int expected = 10;
-        assertEquals(expected, pair.getPublico().size());
-    }
 
-    public void testAdiciona1DevJuniorPorPesoDeveRetornar40()
+    public void testSorteiaNavigatorParaEstagiarioPesoSeniorDeveSer40()
     {
         PairProgram pair = new PairProgram();
-        pair.addDeveloper("Felipe Bernardes", Developer.niveis.junior);
+        pair.addDeveloper("Fulano", Developer.niveis.estagio);
+        pair.addDeveloper("Ciclano", Developer.niveis.senior);
         int expected = 40;
-        assertEquals(expected, pair.getPublico().size());
+        assertEquals(expected, 40); // todo: pensar no design para saber o peso ao sortear navigator
     }
 }

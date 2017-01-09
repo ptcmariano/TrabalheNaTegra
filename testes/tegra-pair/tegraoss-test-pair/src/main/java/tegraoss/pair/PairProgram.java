@@ -1,6 +1,7 @@
 package tegraoss.pair;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class PairProgram {
@@ -10,7 +11,7 @@ public class PairProgram {
         Developer dev = new Developer();
         dev.nome = nome;
         dev.nivel = nivel;
-        adicionaPorPeso(dev);
+        audience.add(dev);
     }
     
     public ArrayList<Developer> getPublico() {
@@ -18,12 +19,22 @@ public class PairProgram {
     }
     
     public Developer sorteiaDriver() {
+        ArrayList<Developer> publicoSorteio = new ArrayList<Developer>();
+        for (Iterator<Developer> iterator = this.getPublico().iterator(); iterator.hasNext();) {
+            Developer developer = (Developer)iterator.next();
+            publicoSorteio.addAll(this.adicionaPorPeso(developer));
+        }
+        return publicoSorteio.get(new Random().nextInt(publicoSorteio.size()));
+    }
+
+    public Developer sorteiaNavigator(Developer dev) {
         Random rand = new Random();
         return audience.get(rand.nextInt(this.audience.size()));
     }
     
-    private void adicionaPorPeso(Developer dev){
+    private ArrayList<Developer> adicionaPorPeso(Developer dev){
         int peso;
+        ArrayList<Developer> publicoSorteio = new ArrayList<Developer>();
         switch (dev.nivel) {
             case estagio:
             case junior:
@@ -35,7 +46,8 @@ public class PairProgram {
                 break;
         }
         for (int i = 0; i < peso; i++) {
-            audience.add(dev);
+            publicoSorteio.add(dev);
         }
+        return publicoSorteio;
     }
 }

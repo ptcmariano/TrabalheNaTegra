@@ -9,4 +9,10 @@ public class Developer {
         senior
     }
     public niveis nivel;
+    
+    @Override
+    public String toString()
+    {
+        return "nome:"+this.nome+";nivel:"+this.nivel;
+    }
 }
