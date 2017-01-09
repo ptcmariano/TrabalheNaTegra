@@ -1,7 +1,7 @@
 package tegraoss.pair;
 
 public class FactoryPublico {
-    public static PairProgram seed(){
+    public static PairProgram gerarDez(){
         PairProgram pair = new PairProgram();
         pair.addDeveloper("Paulo Mariano", Developer.niveis.pleno);
         pair.addDeveloper("Felipe Bernardes", Developer.niveis.senior);
